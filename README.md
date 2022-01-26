@@ -9,3 +9,5 @@ Sandbox de aprenddizaje de la librería para creación de juegos de Python
 ### Basics
  
 Hola esta es la nueva actualización
+
+este juego es una basura
