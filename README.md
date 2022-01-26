@@ -1,5 +1,5 @@
 # PyGame
-Sandbox de aprenddizaje de la librería para creación de juegos de Python
+Sandbox de aprendizaje de la librería para creación de juegos de Python
 
 ## Directorio
 
@@ -7,5 +7,5 @@ Sandbox de aprenddizaje de la librería para creación de juegos de Python
 
 
 ### Basics
- 
-Hola esta es la nueva actualización.
+
+Aprendizaje básico de las funciones de PyGame y de las capacidades de la librería. 
