@@ -1,19 +1,20 @@
 import pygame
 
 
-
-# Assets
-
-
-
-def handle_menu(event, menu_selected):
+def handle_menu(event, MENU_BUTTONS, menu_selected):
     if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_DOWN and menu_selected < 1:
+        if event.key == pygame.K_DOWN and menu_selected < 1:   #Change limit as menu options change
             menu_selected += 1
 
         if event.key == pygame.K_UP and menu_selected > 0:
             menu_selected -= 1
-    print(menu_selected)
+    
+        if event.key == pygame.K_RETURN:
+            if menu_selected == 0:
+                pygame.event.post(pygame.event.Event(MENU_BUTTONS["TO_GAME"]))
+            if menu_selected == 1:
+                pygame.quit()
+    
     return menu_selected
 
 

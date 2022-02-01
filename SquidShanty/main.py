@@ -3,7 +3,7 @@ import os
 
 
 from menu import *
-
+from gameplay import *
 
 pygame.font.init()
 pygame.mixer.init()
@@ -13,11 +13,17 @@ WIDTH, HEIGHT = 1000,600
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Squid Shanty")
 
-# Menu Elements
+
+# Menu Elements and Triggers from the Buttons
 MENU_BUTTONS={
 "START" : pygame.Rect(WIDTH//2 - 75, HEIGHT*1//4, 150, 80),
-"QUIT" : pygame.Rect(WIDTH//2 - 75, HEIGHT*3//4, 150, 80)
+"QUIT" : pygame.Rect(WIDTH//2 - 75, HEIGHT*3//4, 150, 80),
+"TO_GAME" : pygame.USEREVENT + 100,
+"TO_CHARS" : pygame.USEREVENT + 101,
+"TO_LEAD" : pygame.USEREVENT + 102
 }
+
+
 
 # InGame Constants
 FPS=60
@@ -37,10 +43,9 @@ COLOR={
 }
 
 # Initial Mode
-mode="menu"
 
 # Functions
-def main(menu_selected = 0):
+def main(menu_selected = 0, mode="menu"):
 
     clock = pygame.time.Clock()
     run = True
@@ -52,9 +57,15 @@ def main(menu_selected = 0):
                 pygame.quit()
         
 
-        if mode=="menu":
+        if mode == "menu":
             draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected)
-            menu_selected = handle_menu(event, menu_selected)
+            menu_selected = handle_menu(event, MENU_BUTTONS,  menu_selected)
+            
+            if event.type == MENU_BUTTONS["TO_GAME"]:
+                mode = "game"
+
+        if mode == "game":
+            draw_window_game(WIN, COLOR)
     
     main()
 
