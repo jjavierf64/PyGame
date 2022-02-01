@@ -1,3 +1,4 @@
 import pygame
+import random
 
-print("Hello world jijijaja")
+print(random.randint(0,9))
