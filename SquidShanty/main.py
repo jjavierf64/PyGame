@@ -9,15 +9,15 @@ pygame.font.init()
 pygame.mixer.init()
 
 # Window Constants
-WIDTH, HEIGHT = 1000,600
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+WIN_WIDTH, WIN_HEIGHT = 1000,600
+WIN = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 pygame.display.set_caption("Squid Shanty")
 
 
 # Menu Elements and Triggers from the Buttons
 MENU_BUTTONS={
-"START" : pygame.Rect(WIDTH//2 - 75, HEIGHT*1//4, 150, 80),
-"QUIT" : pygame.Rect(WIDTH//2 - 75, HEIGHT*3//4, 150, 80),
+"START" : pygame.Rect(WIN_WIDTH//2 - 75, WIN_HEIGHT*1//4, 150, 80),
+"QUIT" : pygame.Rect(WIN_WIDTH//2 - 75, WIN_HEIGHT*3//4, 150, 80),
 "TO_GAME" : pygame.USEREVENT + 100,
 "TO_CHARS" : pygame.USEREVENT + 101,
 "TO_LEAD" : pygame.USEREVENT + 102
@@ -35,14 +35,30 @@ MAX_BULLETS = 5
 
 #Color Pallette
 COLOR={
-"RED":(110, 7, 7),
-"BLUE":(29, 30, 51),
-"KHAKI":(201, 182, 149),
-"BROWN":(56, 37, 30),
-"DARK_BROWN":(31, 18, 14)
+    "RED":(110, 7, 7),
+    "BLUE":(29, 30, 51),
+    "LIGHTBLUE": (0, 95, 115),
+    "KHAKI":(201, 182, 149),
+    "BROWN":(56, 37, 30),
+    "DARK_BROWN":(31, 18, 14)
 }
 
-# Initial Mode
+# Game Assets
+
+SEA_WIDTH, SEA_HEIGHT = 335, 50
+
+#ASSETS={
+#    "SEA": 
+#}
+GAME_ELEMENTS={
+            "sea1" : pygame.Rect(0,WIN_HEIGHT - SEA_HEIGHT, SEA_WIDTH, SEA_HEIGHT),
+            "sea2" : pygame.Rect(333,WIN_HEIGHT - SEA_HEIGHT, SEA_WIDTH, SEA_HEIGHT),
+            "sea3" : pygame.Rect(666,WIN_HEIGHT - SEA_HEIGHT, SEA_WIDTH, SEA_HEIGHT),
+            "sea4" : pygame.Rect(WIN_WIDTH,WIN_HEIGHT - SEA_HEIGHT, SEA_WIDTH, SEA_HEIGHT)
+            }
+
+
+
 
 # Functions
 def main(menu_selected = 0, mode="menu"):
@@ -65,7 +81,10 @@ def main(menu_selected = 0, mode="menu"):
                 mode = "game"
 
         if mode == "game":
-            draw_window_game(WIN, COLOR)
+            
+            elements_movement(GAME_ELEMENTS, sea_vel, WIN_WIDTH, WIN_HEIGHT)
+
+            draw_window_game(WIN, COLOR, GAME_ELEMENTS)
     
     main()
 
