@@ -25,9 +25,12 @@ def elements_movement(GAME_ELEMENTS, sea_vel, WIN_WIDTH, WIN_HEIGHT):
         GAME_ELEMENTS["sea4"].x = WIN_WIDTH - 5
 
 
-def draw_window_game(WIN, COLOR, GAME_ELEMENTS):
+def draw_window_game(WIN, WIN_WIDTH, WIN_HEIGHT, COLOR, GAME_ELEMENTS, CHARS, char):
     WIN.fill(COLOR["RED"])
     
+    WIN.blit(CHARS["CROOK"], (char.x , char.y))
+
+
 
     pygame.draw.rect(WIN, COLOR["BLUE"], GAME_ELEMENTS["sea1"])
     pygame.draw.rect(WIN, COLOR["LIGHTBLUE"], GAME_ELEMENTS["sea2"])

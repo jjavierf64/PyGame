@@ -45,6 +45,18 @@ COLOR={
 
 # Game Assets
 
+# CHARACTERS
+CHARS_WIDTH, CHARS_HEIGHT = 100, 100
+
+CHARS_IMGS = {
+    "CROOK" : pygame.image.load(os.path.join('Assets', 'Crook.png'))
+}
+
+CHARS= {
+"CROOK" : pygame.transform.scale(CHARS_IMGS["CROOK"],(CHARS_WIDTH,CHARS_HEIGHT))
+}
+
+
 SEA_WIDTH, SEA_HEIGHT = 335, 50
 
 #ASSETS={
@@ -61,7 +73,15 @@ GAME_ELEMENTS={
 
 
 # Functions
-def main(menu_selected = 0, mode="menu"):
+def main():
+
+    menu_selected=0
+    mode="menu"
+
+    char= pygame.Rect(100, WIN_HEIGHT +10 - CHARS_HEIGHT - GAME_ELEMENTS["sea1"].height, CHARS_WIDTH, CHARS_HEIGHT)
+    
+
+
 
     clock = pygame.time.Clock()
     run = True
@@ -84,7 +104,7 @@ def main(menu_selected = 0, mode="menu"):
             
             elements_movement(GAME_ELEMENTS, sea_vel, WIN_WIDTH, WIN_HEIGHT)
 
-            draw_window_game(WIN, COLOR, GAME_ELEMENTS)
+            draw_window_game(WIN, WIN_WIDTH, WIN_HEIGHT, COLOR, GAME_ELEMENTS, CHARS, char)
     
     main()
 
