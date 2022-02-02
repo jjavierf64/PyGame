@@ -1,14 +1,17 @@
 from random import Random
+from typing import Sequence
 import pygame
 import os
 import random
+
 RN = random.randint(1,4)
 RN2 = random.randint(1,1)
 
 WIDTH, HEIGHT = 900, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("First Game")
-
+#pygame.display.
+            
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 
