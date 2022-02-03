@@ -80,15 +80,16 @@ def main():
     mode="menu"
 
     char= pygame.Rect(100, WIN_HEIGHT +10 - CHARS_HEIGHT - GAME_ELEMENTS["sea1"].height, CHARS_WIDTH, CHARS_HEIGHT)
-    
-
 
 
     clock = pygame.time.Clock()
     run = True
     while run:
+        event_list = pygame.event.get()
+
+        
         clock.tick(FPS)
-        for event in pygame.event.get():
+        for event in event_list:
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
@@ -96,7 +97,8 @@ def main():
 
         if mode == "menu":
             draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected)
-            menu_selected = handle_menu(event, MENU_BUTTONS,  menu_selected)
+            for event in event_list:
+                menu_selected = handle_menu(event, MENU_BUTTONS,  menu_selected)
             
             if event.type == MENU_BUTTONS["TO_GAME"]:
                 mode = "game"
