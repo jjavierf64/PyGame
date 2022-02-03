@@ -18,7 +18,7 @@ def handle_menu(event, MENU_BUTTONS, menu_selected):
     return menu_selected
 
 
-def draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected=0):
+def draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected):
     start_color = COLOR["KHAKI"]
     quit_color = COLOR["KHAKI"]
     if menu_selected == 0:

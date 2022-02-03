@@ -100,6 +100,8 @@ def main():
             if event.type == MENU_BUTTONS["TO_GAME"]:
                 mode = "game"
 
+
+
         if mode == "game":
             
             elements_movement(GAME_ELEMENTS, sea_vel, WIN_WIDTH, WIN_HEIGHT)
