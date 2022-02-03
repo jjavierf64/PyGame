@@ -18,6 +18,7 @@ pygame.display.set_caption("Squid Shanty")
 MENU_BUTTONS={
 "START" : pygame.Rect(WIN_WIDTH//2 - 75, WIN_HEIGHT*1//4, 150, 80),
 "QUIT" : pygame.Rect(WIN_WIDTH//2 - 75, WIN_HEIGHT*3//4, 150, 80),
+"OPTIONS" : pygame.Rect(WIN_WIDTH//2 - 75, WIN_HEIGHT*2//4, 150, 80),
 "TO_GAME" : pygame.USEREVENT + 100,
 "TO_CHARS" : pygame.USEREVENT + 101,
 "TO_LEAD" : pygame.USEREVENT + 102
