@@ -25,7 +25,7 @@ def draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected):
     if menu_selected == 0:
         start_color = COLOR["BROWN"]
     if menu_selected == 1:
-        quit_color = COLOR["BROWN"]
+        options_color = COLOR["BROWN"]
     if menu_selected == 2:
         quit_color = COLOR["BROWN"]
     
