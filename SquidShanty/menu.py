@@ -18,6 +18,8 @@ def handle_menu(event, MENU_BUTTONS, menu_selected):
 
 
             if menu_selected == 2:
+                pygame.display.update()
+                pygame.time.delay(2000)
                 pygame.quit()
     
     return menu_selected
