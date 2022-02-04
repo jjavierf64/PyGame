@@ -1,5 +1,5 @@
 import pygame
-
+import os
 
 def handle_menu(event, MENU_BUTTONS, menu_selected):
     if event.type == pygame.KEYDOWN:
@@ -12,6 +12,11 @@ def handle_menu(event, MENU_BUTTONS, menu_selected):
         if event.key == pygame.K_RETURN:
             if menu_selected == 0:
                 pygame.event.post(pygame.event.Event(MENU_BUTTONS["TO_GAME"]))
+
+            if menu_selected == 1:
+                pygame.mixer.music.play(os.path.join('Assets' 'Blob.mp3'))
+
+
             if menu_selected == 2:
                 pygame.quit()
     
