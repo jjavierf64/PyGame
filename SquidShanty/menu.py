@@ -14,12 +14,11 @@ def handle_menu(event, MENU_BUTTONS, menu_selected):
                 pygame.event.post(pygame.event.Event(MENU_BUTTONS["TO_GAME"]))
 
             if menu_selected == 1:
-                pygame.mixer.music.play(os.path.join('Assets' 'Blob.mp3'))
-
+                pass
 
             if menu_selected == 2:
                 pygame.display.update()
-                pygame.time.delay(2000)
+                pygame.time.delay(1000)
                 pygame.quit()
     
     return menu_selected
