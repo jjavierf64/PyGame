@@ -33,7 +33,6 @@ sea_vel = INITIAL_SEA_VEL
 BULLET_VEL = 7
 MAX_BULLETS = 5
 
-
 #Color Pallette
 COLOR={
     "RED":(110, 7, 7),

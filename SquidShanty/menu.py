@@ -1,6 +1,13 @@
 import pygame
 import os
 
+
+pygame.mixer.init()
+
+
+BLOB = pygame.mixer.Sound(os.path.join('Assets', 'Assets_Grenade+1.mp3'))
+
+
 def handle_menu(event, MENU_BUTTONS, menu_selected):
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_DOWN and menu_selected < 2:   #Change limit as menu options change
@@ -14,7 +21,7 @@ def handle_menu(event, MENU_BUTTONS, menu_selected):
                 pygame.event.post(pygame.event.Event(MENU_BUTTONS["TO_GAME"]))
 
             if menu_selected == 1:
-                pass
+                BLOB.play()
 
             if menu_selected == 2:
                 pygame.display.update()
