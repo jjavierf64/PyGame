@@ -1,12 +1,17 @@
+import numbers
+from token import NUMBER
 import pygame
 import os
+import random
 pygame.mixer.init()
 
 POP = pygame.mixer.Sound(os.path.join('Assets', 'Pop.mp3'))
 PIP = pygame.mixer.Sound(os.path.join('Assets', 'Pip.mp3'))
 QUIT_SOUND = pygame.mixer.Sound(os.path.join('Assets', 'Quit.mp3'))
+QUIT_SOUND_2 = pygame.mixer.Sound(os.path.join('Assets', 'Quit 2.mp3'))
 MENU = pygame.image.load(os.path.join('Assets', 'Menu.png'))
 
+RN = random.randint(1,2)
 
 def handle_menu(event, MENU_BUTTONS, menu_selected):
     if event.type == pygame.KEYDOWN:
@@ -31,9 +36,12 @@ def handle_menu(event, MENU_BUTTONS, menu_selected):
 
             if menu_selected == 2:
                 POP.play()
-                QUIT_SOUND.play()
+                if RN == 1:
+                    QUIT_SOUND.play()
+                if RN == 2:
+                    QUIT_SOUND_2.play()
                 pygame.display.update()
-                pygame.time.delay(1000)
+                pygame.time.delay(2000)
                 pygame.quit()
                 
     
