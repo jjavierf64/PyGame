@@ -23,6 +23,7 @@ BORDER = pygame.Rect(WIDTH//2 - 5, 0, 10, HEIGHT)
 
 BULLET_HIT_SOUND = pygame.mixer.Sound(os.path.join('Assets', 'Assets_Grenade+1.mp3'))
 BULLET_FIRE_SOUND =pygame.mixer.Sound(os.path.join('Assets', 'Assets_Gun+Silencer.mp3'))
+CUACK =pygame.mixer.Sound(os.path.join('Assets', 'cuak.mp3'))
 
 HEALTH_FONT = pygame.font.SysFont('arial',40)
 WINNER_FONT = pygame.font.SysFont('arial',100)
@@ -31,7 +32,7 @@ FPS = 60
 VEL = 5
 BULLET_VEL = 7
 MAX_BULLETS = 3
-SPACESHIP_WIDTH, SPACESHIP_HEIGHT = 55, 40
+SPACESHIP_WIDTH, SPACESHIP_HEIGHT = 95, 100
 
 YELLOW_HIT = pygame.USEREVENT + 1
 RED_HIT = pygame.USEREVENT + 2
@@ -39,7 +40,7 @@ RED_HIT = pygame.USEREVENT + 2
 YELLOW_SPACESHIP_IMAGE = pygame.image.load(
     os.path.join('Assets', 'spaceship_yellow.png'))
 YELLOW_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(
-    YELLOW_SPACESHIP_IMAGE, (SPACESHIP_WIDTH,SPACESHIP_HEIGHT)),90)
+    YELLOW_SPACESHIP_IMAGE, (SPACESHIP_WIDTH,SPACESHIP_HEIGHT)),0)
 RED_SPACESHIP_IMAGE = pygame.image.load(
     os.path.join('Assets', 'spaceship_red.png'))
 RED_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(
@@ -146,7 +147,7 @@ def main():
                     bullet = pygame.Rect(
                         yellow.x + yellow.width, yellow.y + yellow.height//2 - 2, 10, 5)
                     yellow_bullets.append(bullet)
-                    BULLET_FIRE_SOUND.play()
+                    CUACK.play()
 
                 if event.key == pygame.K_RCTRL and len(red_bullets) < MAX_BULLETS:
                     bullet = pygame.Rect(
@@ -156,7 +157,7 @@ def main():
 
             if event.type == RED_HIT:
                 red_health -= 1
-                BULLET_HIT_SOUND.play()
+                CUACK.play()
 
             if event.type == YELLOW_HIT:
                 yellow_health -= 1
@@ -165,7 +166,7 @@ def main():
         
         winner_text = ""
         if red_health <= 0:
-            winner_text = "Yellow Wins!"
+            winner_text = "Patito Wins!"
 
         if yellow_health <= 0:
             winner_text = "Red Wins!"

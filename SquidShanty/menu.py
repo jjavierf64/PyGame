@@ -1,17 +1,17 @@
 import numbers
 from token import NUMBER
+from typing import Set
 import pygame
 import os
 import random
+from main import *
 pygame.mixer.init()
 
-POP = pygame.mixer.Sound(os.path.join('Assets', 'Pop.mp3'))
-PIP = pygame.mixer.Sound(os.path.join('Assets', 'Pip.mp3'))
-QUIT_SOUND = pygame.mixer.Sound(os.path.join('Assets', 'Quit.mp3'))
-QUIT_SOUND_2 = pygame.mixer.Sound(os.path.join('Assets', 'Quit 2.mp3'))
-MENU = pygame.image.load(os.path.join('Assets', 'Menu.png'))
+
+STOP = 0
 
 RN = random.randint(1,2)
+#print(RN)
 
 def handle_menu(event, MENU_BUTTONS, menu_selected):
     if event.type == pygame.KEYDOWN:
@@ -45,10 +45,11 @@ def handle_menu(event, MENU_BUTTONS, menu_selected):
                 pygame.quit()
                 
     
+    
     return menu_selected
 
 
-def draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected):
+def draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected, PATO_HITBOX, PATO_VEL, STOP):
     start_color = COLOR["KHAKI"]
     quit_color = COLOR["KHAKI"]
     options_color = COLOR["KHAKI"]
@@ -58,8 +59,27 @@ def draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected):
         options_color = COLOR["BROWN"]
     if menu_selected == 2:
         quit_color = COLOR["BROWN"]
+        
+    if RN == 1:
+        WIN.blit(MENU,(0,0))
+    if RN == 2:
+        WIN.blit(MENU_2,(0,0))
+        WIN.blit(PATO_IMAGEN,(PATO_HITBOX.x, PATO_HITBOX.y))
+        
+
+        if PATO_HITBOX.x + PATO_HITBOX.width < 500:
+            STOP = 1
+        
+        if STOP == 0:
+            PATO_HITBOX.x -= PATO_VEL
+        if STOP == 1:
+            PATO_HITBOX.x += PATO_VEL
     
-    WIN.blit(MENU,(0,0))
+              
+    print(STOP)
+        
+            
+
 
     pygame.draw.rect(WIN, start_color, MENU_BUTTONS["START"])
     pygame.draw.rect(WIN, quit_color, MENU_BUTTONS["QUIT"])

@@ -13,6 +13,14 @@ WIN_WIDTH, WIN_HEIGHT = 1000,600
 WIN = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 pygame.display.set_caption("Squid Shanty")
 
+POP = pygame.mixer.Sound(os.path.join('Assets', 'Pop.mp3'))
+PIP = pygame.mixer.Sound(os.path.join('Assets', 'Pip.mp3'))
+QUIT_SOUND = pygame.mixer.Sound(os.path.join('Assets', 'Quit.mp3'))
+QUIT_SOUND_2 = pygame.mixer.Sound(os.path.join('Assets', 'Quit 2.mp3'))
+MENU = pygame.image.load(os.path.join('Assets', 'Menu.png'))
+MENU_2 = pygame.image.load(os.path.join('Assets', 'Space.png'))
+PATO = pygame.image.load(os.path.join('Assets', 'Pato.png'))
+PATO_IMAGEN = pygame.transform.rotate(pygame.transform.scale(PATO, (95,100)),0)
 
 # Menu Elements and Triggers from the Buttons
 MENU_BUTTONS={
@@ -32,6 +40,7 @@ INITIAL_SEA_VEL = 5
 sea_vel = INITIAL_SEA_VEL
 BULLET_VEL = 7
 MAX_BULLETS = 5
+PATO_VEL = 2
 
 #Color Pallette
 COLOR={
@@ -78,6 +87,8 @@ def main():
     menu_selected=0
     mode="menu"
 
+    PATO_HITBOX = pygame.Rect(200, 500, 95//3, 100//3)
+
     char= pygame.Rect(100, WIN_HEIGHT +10 - CHARS_HEIGHT - GAME_ELEMENTS["sea1"].height, CHARS_WIDTH, CHARS_HEIGHT)
 
 
@@ -95,9 +106,10 @@ def main():
         
 
         if mode == "menu":
-            draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected)
+            draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected, PATO_HITBOX, PATO_VEL, STOP)
             for event in event_list:
                 menu_selected = handle_menu(event, MENU_BUTTONS,  menu_selected)
+                
             
             if event.type == MENU_BUTTONS["TO_GAME"]:
                 mode = "game"
@@ -110,6 +122,8 @@ def main():
 
             draw_window_game(WIN, WIN_WIDTH, WIN_HEIGHT, COLOR, GAME_ELEMENTS, CHARS, char)
     
+
+
     main()
 
 
