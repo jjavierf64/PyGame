@@ -8,9 +8,7 @@ from main import *
 pygame.mixer.init()
 
 
-STOP = 0
-
-RN = random.randint(1,2)
+RN = random.randint(2,2)
 #print(RN)
 
 def handle_menu(event, MENU_BUTTONS, menu_selected):
@@ -49,7 +47,7 @@ def handle_menu(event, MENU_BUTTONS, menu_selected):
     return menu_selected
 
 
-def draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected, PATO_HITBOX, PATO_VEL, STOP):
+def draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected, PATO_HITBOX, PATO_VEL, stop):
     start_color = COLOR["KHAKI"]
     quit_color = COLOR["KHAKI"]
     options_color = COLOR["KHAKI"]
@@ -67,16 +65,15 @@ def draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected, PATO_HITBOX, PATO_
         WIN.blit(PATO_IMAGEN,(PATO_HITBOX.x, PATO_HITBOX.y))
         
 
-        if PATO_HITBOX.x + PATO_HITBOX.width < 500:
-            STOP = 1
         
-        if STOP == 0:
-            PATO_HITBOX.x -= PATO_VEL
-        if STOP == 1:
+        
+        if stop == 0:
             PATO_HITBOX.x += PATO_VEL
+        if stop == 1:
+            PATO_HITBOX.x -= PATO_VEL
     
               
-    print(STOP)
+    print(stop)
         
             
 
