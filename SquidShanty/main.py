@@ -113,7 +113,7 @@ def main():
 
         if mode == "menu":
             # Pato cochino
-            if PATO_HITBOX.x + PATO_HITBOX.width >= 450:
+            if PATO_HITBOX.x + PATO_HITBOX.width >= 990:
                 stop = 1
             
             draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected, PATO_HITBOX, PATO_VEL, stop)

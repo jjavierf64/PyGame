@@ -69,8 +69,11 @@ def draw_window_menu(WIN, COLOR, MENU_BUTTONS, menu_selected, PATO_HITBOX, PATO_
         
         if stop == 0:
             PATO_HITBOX.x += PATO_VEL
+            pygame.transform.rotate(PATO, 0)
+            
         if stop == 1:
             PATO_HITBOX.x -= PATO_VEL
+            pygame.transform.rotate((PATO), 90)
     
               
     print(stop)
