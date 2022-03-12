@@ -28,7 +28,8 @@ COLOR={
 # ELEMENTS
 
 STARS={
-    "green":pygame.Rect(0,0, 20, 20)
+    "green":pygame.Rect(0,0, 20, 20),
+    "pink":pygame.Rect(0,0, 20, 20)
 }
 
 
@@ -38,13 +39,22 @@ def draw_window(WIN, STARS, pos1):
     WIN.blit(BG,(0,0))
 
 
-    
+    # GREEN MOVEMENT
     #if STARS["green"].x + STARS["green"].width > 0:
-    STARS["green"].y = 250 + math.sin(pos1*math.pi/15)*15 + math.sin(pos1*math.pi/150)*150 + 0.2*pos1
+    STARS["green"].y = 250 + 15 * math.sin(pos1*math.pi/15) + 150 * math.sin(pos1*math.pi/150) + 0.2*pos1
     STARS["green"].x = pos1
+
+    # PINK MOVEMENT
+    STARS["pink"].y = 200 + 100 * math.sin(pos1*math.pi/40)
+    STARS["pink"].x = WIN_WIDTH-( 100 + 100 * math.cos(pos1*math.pi/40) + pos1)
+
+
+
+
     pos1 += 1 
 
     pygame.draw.rect(WIN, COLOR["GREEN"], STARS["green"])
+    pygame.draw.rect(WIN, COLOR["PINK"], STARS["pink"])
     pygame.display.update()
     return pos1
 
