@@ -40,9 +40,11 @@ def draw_window(WIN, STARS, pos1):
 
     
     #if STARS["green"].x + STARS["green"].width > 0:
-    STARS["green"].y = math.sin(pos1) * 10 + round(pos1)
+
+    pos2 = math.sin(pos1*math.pi/150)*150
+    STARS["green"].y = 250 + math.sin(pos1*math.pi/15)*15 + pos2 + 0.25*pos1
     STARS["green"].x = pos1
-    pos1 += math.pi/20 
+    pos1 += 1 
 
     pygame.draw.rect(WIN, COLOR["GREEN"], STARS["green"])
     pygame.display.update()
@@ -57,7 +59,10 @@ def main():
     clock = pygame.time.Clock()
     run = True
     global pos1
-    pos1=math.pi
+    pos1=0
+    global pos2
+    pos2=0
+
 
     while run:
         event_list = pygame.event.get()
