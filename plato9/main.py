@@ -1,5 +1,6 @@
 import pygame
 import os
+import math
 
 pygame.font.init()
 pygame.mixer.init()
@@ -33,13 +34,19 @@ STARS={
 
 # FUNCTIONS
 
-def draw_window(WIN, STARS):
+def draw_window(WIN, STARS, pos1):
     WIN.blit(BG,(0,0))
 
 
+    
+    #if STARS["green"].x + STARS["green"].width > 0:
+    STARS["green"].y = math.sin(pos1) * 10 + round(pos1)
+    STARS["green"].x = pos1
+    pos1 += math.pi/20 
+
     pygame.draw.rect(WIN, COLOR["GREEN"], STARS["green"])
     pygame.display.update()
-
+    return pos1
 
 
 
@@ -49,6 +56,9 @@ def main():
 
     clock = pygame.time.Clock()
     run = True
+    global pos1
+    pos1=math.pi
+
     while run:
         event_list = pygame.event.get()
 
@@ -58,7 +68,7 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
-        draw_window(WIN, STARS)
+        pos1 = draw_window(WIN, STARS, pos1)
 
 
     main()
