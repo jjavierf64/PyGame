@@ -40,9 +40,7 @@ def draw_window(WIN, STARS, pos1):
 
     
     #if STARS["green"].x + STARS["green"].width > 0:
-
-    pos2 = math.sin(pos1*math.pi/150)*150
-    STARS["green"].y = 250 + math.sin(pos1*math.pi/15)*15 + pos2 + 0.25*pos1
+    STARS["green"].y = 250 + math.sin(pos1*math.pi/15)*15 + math.sin(pos1*math.pi/150)*150 + 0.2*pos1
     STARS["green"].x = pos1
     pos1 += 1 
 
@@ -60,8 +58,6 @@ def main():
     run = True
     global pos1
     pos1=0
-    global pos2
-    pos2=0
 
 
     while run:
